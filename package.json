@@ -1,0 +1,19 @@
+{
+  "name": "@types/vecttor",
+  "version": "0.1.0",
+  "preview": true,
+  "description": "TypeScript definitions for Vecttor JS interface",
+  "private": true,
+  "contributors": [
+    {
+      "name": "Ernesto Ramirez",
+      "url": "https://github.com/NearTox",
+      "githubUsername": "NearTox"
+    }
+  ],
+  "types": "index",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vecttor-iluminacion/vecttor-js-types.git"
+  }
+}
