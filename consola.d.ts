@@ -1,12 +1,16 @@
 /**
- * @type Uint8Array
  * @field length = 512
 */
-type Escena_DMX = Number[];
+type Escena_DMX = Uint8Array;
+
+/**
+* @field length = 16
+*/
+type Escenas = Array<Escena_DMX>;
 
 /** @todo rename this class */
 export class FileType_VTTX_V1 {
-  escenas: [Escena_DMX, Escena_DMX, Escena_DMX, Escena_DMX];
+  escenas: Escenas;
   /**
    * clamped to `[3, 2**31 - 1]`
    * @default 100 * .01 sec
@@ -19,7 +23,7 @@ export class FileType_VTTX_V1 {
   animationDuracion: Number;
   constructor();
   constructor(
-    escenas: [Escena_DMX, Escena_DMX, Escena_DMX, Escena_DMX],
+    escenas: Escenas,
     duracion: Number,
     animationDuracion: Number);
 }
@@ -27,7 +31,9 @@ export class FileType_VTTX_V1 {
 /** @todo expose this class */
 export class GrupoDeCanales_Info {
   Nombre: String;
-  Canales: Number[];
+  // [1, 512 * 16]
+  Canales: Array<Number>;
+  // [0, 255]
   Valor: number;
 }
 
@@ -42,13 +48,13 @@ declare class FileManager_ConsolaProxy {
 
   /**
    * Retrieves the number of available DMX Universes
-   * @constant 4
+   * @constant 16
    */
   readonly MaxDMX: Number;
-  /** Fast acess to `this.getEscenaAt(this.currEscena)` */
+  /** Is same to `this.getEscenaAt(this.currEscena)` */
   get escena(): FileType_VTTX_V1;
 
-  /** Fast acess to `this.setEscenaAt(this.currEscena, escena_)` */
+  /** Is same to `this.setEscenaAt(this.currEscena, escena_)` */
   set escena(escena_: FileType_VTTX_V1);
 
   /**
@@ -59,6 +65,7 @@ declare class FileManager_ConsolaProxy {
   /** Set the Escena marked by `index` */
   setEscenaAt(index: Number, dmxData: FileType_VTTX_V1);
 
+  /** Similar to index */
   get currEscena(): Number;
   set currEscena(currEscena_: Number);
 
