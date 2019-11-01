@@ -18,8 +18,8 @@ export class BezierPair {
 /**
  * @param origin value
  * @param dest value
- * @param current step, clamped to `[0, total]`
- * @param total steps for the animation
+ * @param current step, clamped to `[0.0, total]`
+ * @param total steps for the animation, clamped to `[0.0, Number.MAX_VALUE]`
  * @param curve to apply, default `CSS_Linear`
  *
  * @returns value at `current` step

@@ -1,12 +1,8 @@
 /**
- * @field length = 512
-*/
-type Escena_DMX = Uint8Array;
-
-/**
-* @field length = 16
-*/
-type Escenas = Array<Escena_DMX>;
+ * @field length = 8192
+ *        512 * 16
+ */
+type Escenas = Uint8Array;
 
 /** @todo rename this class */
 export class FileType_VTTX_V1 {
